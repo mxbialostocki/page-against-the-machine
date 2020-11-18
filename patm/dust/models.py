@@ -1,9 +1,11 @@
 from django.db import models
+from django.utils import timezone
 
 class Author(models.Model):
     first_name = models.CharField(max_length=80)
     last_name = models.CharField(max_length=80)
-    email = models.EmailField()
+    email = models.EmailField(null=True)
+    date_added = models.DateTimeField(timezone.now())
 
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
