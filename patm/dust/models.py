@@ -8,6 +8,9 @@ class Author(models.Model):
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
 
+    def __str__(self):
+        return u'%s %s' % (self.first_name, self.last_name)
+
     class Meta:
         db_table = 'author'
         app_label = 'dust'
@@ -18,7 +21,7 @@ class Imprint(models.Model):
     # publisher = models.ForeignKey(Publisher, on_delete=models.DO_NOTHING)
     website = models.URLField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
     
     class Meta:
@@ -34,7 +37,7 @@ class Publisher(models.Model):
     website = models.URLField()
     imprints = models.ManyToManyField(Imprint)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
     
     class Meta:
@@ -50,7 +53,7 @@ class Supplier(models.Model):
     website = models.URLField()
     publishers = models.ManyToManyField(Publisher)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
     
     class Meta:
@@ -150,7 +153,7 @@ class Book(models.Model):
         default='ACT'
     )
     
-    def __unicode__(self):
+    def __str__(self):
         return self.title
     
     class Meta:
